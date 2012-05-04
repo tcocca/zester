@@ -16,6 +16,7 @@ tmtags
 ## PROJECT::GENERAL
 coverage
 rdoc
+.rvmrc
 
 ## PROJECT::SPECIFIC
 Gemfile.lock

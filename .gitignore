@@ -24,4 +24,4 @@ Gemfile.lock
 .bundle
 pkg/*
 spec/zillow_api_key.yml
-spec/fixtures/vcr_cassettes/*.yml
+spec/vcr_cassettes/*.yml

@@ -1,3 +1,7 @@
-module Zester
-  # Your code goes here...
-end
+require 'httparty'
+require 'rash'
+require 'zester/client'
+require 'zester/mortgage'
+require 'zester/valuation'
+require 'zester/property'
+require 'zester/neighborhood'

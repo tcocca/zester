@@ -12,8 +12,8 @@ module Zester
       self.class.default_params "zws-id" => zws_id
     end
 
-    def perform_get(path, params = {})
-      self.class.get(path, :query => params)
+    def perform_get(endpoint, params = {})
+      self.class.get("/#{endpoint}.htm", :query => params)
     end
 
     def property

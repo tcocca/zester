@@ -1,11 +1,5 @@
 module Zester
-  class Neighborhood
-
-    attr_accessor :client
-
-    def initialize(client)
-      self.client = client
-    end
+  class Neighborhood < Resource
 
   end
 end

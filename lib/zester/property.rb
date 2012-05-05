@@ -1,11 +1,5 @@
 module Zester
-  class Property
-
-    attr_accessor :client
-
-    def initialize(client)
-      self.client = client
-    end
+  class Property < Resource
 
   end
 end

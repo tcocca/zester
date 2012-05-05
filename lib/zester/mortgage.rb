@@ -1,10 +1,8 @@
 module Zester
-  class Mortgage
+  class Mortgage < Resource
 
-    attr_accessor :client
-
-    def initialize(client)
-      self.client = client
+    def rate_summary(state = nil)
+      get_results('GetRateSummary', :rate_summary, {:state => state})
     end
 
   end

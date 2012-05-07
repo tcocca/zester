@@ -8,11 +8,15 @@ module Zester
     end
 
     def success?
-      self.message && self.message.code && self.message.code == "0"
+      !self.response_code.nil? &&  self.response_code == 0
     end
 
     def error_message
       self.message.text if self.message && self.message.text
+    end
+
+    def response_code
+      self.message.code.to_i if self.message && self.message.code
     end
 
     def near_limit?

@@ -2,10 +2,9 @@ require 'spec_helper'
 
 describe Zester::Mortgage do
   let!(:zester) {new_zester}
+  let!(:mortgage) {zester.mortgage}
 
   context "rate_summary" do
-    let!(:mortgage) {zester.mortgage}
-
     it "should be a success" do
       VCR.use_cassette('mortgage') do
         response = mortgage.rate_summary
@@ -19,6 +18,7 @@ describe Zester::Mortgage do
       VCR.use_cassette('mortgage') do
         response = mortgage.rate_summary('XZ')
         response.success?.should be_false
+        response.response_code.should ==  501
         response.error_message.should_not be_nil
         response.should_not respond_to(:today)
         response.should_not respond_to(:last_week)

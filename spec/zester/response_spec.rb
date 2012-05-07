@@ -10,6 +10,8 @@ describe Zester::Response do
       response.success?.should be_true
       response.message.should_not be_nill
       response.message.code.should == "0"
+      response.should be_instance_of(Zester::Response)
+      response.body.should be_instance_of(Hashie::Rash)
     end
   end
 
@@ -26,7 +28,7 @@ describe Zester::Response do
     it "should call methods off of the body.response" do
       VCR.use_cassette('response') do
         response = resource.get_results('GetRateSummary', :rate_summary)
-        response.body.response.today.should == response.today
+        response.today.should == response.body.response.today
       end
     end
   end

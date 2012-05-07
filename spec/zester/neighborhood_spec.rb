@@ -78,9 +78,9 @@ describe Zester::Neighborhood do
   end
 
   context "region_chart" do
-    it "should check for required params" do
+    it "should not require any params" do
       VCR.use_cassette('neighborhood') do
-        expect {neighborhood.region_chart}.to raise_error(ArgumentError, "unit-type is required")
+        expect {neighborhood.region_chart}.to_not raise_error(ArgumentError)
         expect {neighborhood.region_chart('unit-type' => 'dollar')}.to_not raise_error(ArgumentError)
       end
     end

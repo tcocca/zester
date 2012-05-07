@@ -19,9 +19,7 @@ module Zester
     end
 
     def region_chart(params = {})
-      if params['unit-type'].nil?
-        raise ArgumentError, "unit-type is required"
-      end
+      params['unit-type'] ||= 'dollar'
       get_results('GetRegionChart', :regionchart, params)
     end
 

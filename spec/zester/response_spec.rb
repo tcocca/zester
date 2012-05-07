@@ -24,11 +24,37 @@ describe Zester::Response do
     end
   end
 
+  context "respond_to?" do
+    it "should respond to methods called from body.response" do
+      VCR.use_cassette('response') do
+        response = resource.get_results('GetRateSummary', :rate_summary)
+        response.should respond_to(:today)
+        response.should respond_to(:last_week)
+      end
+    end
+
+    it "should not respond to methods called off body.response" do
+      VCR.use_cassette('response') do
+        response = resource.get_results('GetRateSummary', :rate_summary, {:state => 'XZ'})
+        response.should_not respond_to(:today)
+        response.should_not respond_to(:last_week)
+      end
+    end
+  end
+
   context "method_missing" do
     it "should call methods off of the body.response" do
       VCR.use_cassette('response') do
         response = resource.get_results('GetRateSummary', :rate_summary)
         response.today.should == response.body.response.today
+      end
+    end
+
+    it "should raise errors when the method does not exist" do
+      VCR.use_cassette('response') do
+        response = resource.get_results('GetRateSummary', :rate_summary, {:state => 'XZ'})
+        expect {response.today}.to raise_error(NoMethodError)
+        expect {response.last_week}.to raise_error(NoMethodError)
       end
     end
   end

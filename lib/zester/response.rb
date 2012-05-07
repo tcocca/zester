@@ -31,5 +31,13 @@ module Zester
       end
     end
 
+    def respond_to?(method_name)
+      if self.body.respond_to?(:response) && self.body.response.respond_to?(method_name)
+        true
+      else
+        super
+      end
+    end
+
   end
 end

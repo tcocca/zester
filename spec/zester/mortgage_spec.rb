@@ -11,6 +11,7 @@ describe Zester::Mortgage do
         response = mortgage.rate_summary
         response.success?.should be_true
         response.today.should_not be_nil
+        response.last_week.should_not be_nil
       end
     end
 
@@ -19,6 +20,8 @@ describe Zester::Mortgage do
         response = mortgage.rate_summary('XZ')
         response.success?.should be_false
         response.error_message.should_not be_nil
+        response.should_not respond_to(:today)
+        response.should_not respond_to(:last_week)
       end
     end
   end

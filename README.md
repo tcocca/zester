@@ -18,6 +18,16 @@ You do not need to pass the 'zws-id' param to any api calls, this param will be 
 
 All other params for each api call are passed as a hash with the keys as strings in the exact same format as specified in the Zillow API docs
 
+There is also an optional parameter to set the timeout in seconds, passing this will raise a Timeout::Error after that number of seconds
+
+```ruby
+zester = Zester::Client.new('your_api_key', 5)  # raises a Timeout::Error after 5 seconds with no response
+```
+
+Timeout::Errors and other Exceptions are automatically rescued in the Zester::Resource class and will return a 
+fake response telling you 'Web services are currently unavailable' in the @response.error_message method, same as any actual Zillow api error messages.
+Also, the @response.response_code will be 3.
+
 ### Home Valuation
 
 Zillow 'Home Valuation' calls are accessed off of the client#valuation method:

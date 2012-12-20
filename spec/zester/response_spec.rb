@@ -8,7 +8,7 @@ describe Zester::Response do
     VCR.use_cassette('response') do
       response = resource.get_results('GetRateSummary', :rate_summary)
       response.success?.should be_true
-      response.message.should_not be_nill
+      response.message.should_not be_nil
       response.message.code.should == "0"
       response.response_code.should == 0
       response.should be_instance_of(Zester::Response)

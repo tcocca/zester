@@ -25,4 +25,3 @@ Gemfile.lock
 pkg/*
 spec/zillow_api_key.yml
 spec/vcr_cassettes/*.yml
-spec/zester/resource_spec.rb

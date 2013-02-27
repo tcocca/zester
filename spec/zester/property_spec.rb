@@ -68,17 +68,9 @@ describe Zester::Property do
 
     it "should return a success" do
       VCR.use_cassette('property') do
-        response = property.updated_property_details('zpid' => '48749425')
+        response = property.updated_property_details('zpid' => '1')
         response.success?.should be_true
         response.zpid.should_not be_nil
-        response.page_view_count.should_not be_nil
-        response.address.should_not be_nil
-        response.links.should_not be_nil
-        response.edited_facts.should_not be_nil
-        response.neighborhood.should_not be_nil
-        response.school_district.should_not be_nil
-        response.elementary_school.should_not be_nil
-        response.middle_school.should_not be_nil
       end
     end
 

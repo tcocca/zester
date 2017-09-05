@@ -14,12 +14,14 @@ Gem::Specification.new do |s|
 
   s.rubyforge_project = "zester"
 
+  s.required_ruby_version     = '>= 2.0.0'
+
   s.files         = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
   s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
   s.require_paths = ["lib"]
 
-  s.add_dependency 'httparty', '~> 0.10.2'
+  s.add_dependency 'httparty', '~> 0.15.0'
   s.add_dependency "rash", "~> 0.4.0"
   s.add_development_dependency "rake", "~> 0.9.2"
   s.add_development_dependency "rspec", "~> 2.10.0"

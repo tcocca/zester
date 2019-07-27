@@ -24,11 +24,6 @@ describe Zester::Client do
       zester.property.client.should == zester
     end
 
-    it "should return an instance of Zester::Valuatiion for mortgage" do
-      zester.mortgage.should be_kind_of(Zester::Mortgage)
-      zester.mortgage.client.should == zester
-    end
-
     it "should return an instance of Zester::Valuatiion for neighborhood" do
       zester.neighborhood.should be_kind_of(Zester::Neighborhood)
       zester.neighborhood.client.should == zester

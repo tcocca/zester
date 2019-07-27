@@ -7,3 +7,7 @@ end
 def new_timeout_zester
   Zester::Client.new(ZWS_ID, 5)
 end
+
+def get_response(state = 'CA')
+  resource.get_results('GetRegionChildren', :regionchildren, state: state)
+end

@@ -11,7 +11,8 @@ describe Zester::Resource do
   context "get_results" do
     it "should return a response" do
       VCR.use_cassette('resource') do
-        response = resource.get_results('GetRateSummary', :rate_summary)
+        response = get_response
+        response.success?.should be_true
         response.should be_instance_of(Zester::Response)
       end
     end
@@ -27,8 +28,8 @@ describe Zester::Resource do
     end
 
     it "should rescue a timeout error" do
-      stub_request(:get, "http://www.zillow.com/webservice/GetRateSummary.htm?zws-id=#{ZWS_ID}").to_timeout
-      response = resource.get_results('GetRateSummary', :rate_summary)
+      stub_request(:get, "http://www.zillow.com/webservice/GetRegionChildren.htm?state=CA&zws-id=#{ZWS_ID}").to_timeout
+      response = get_response
       response.success?.should be_false
       response.message.should_not be_nil
       response.message.code.should == "3"

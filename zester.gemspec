@@ -21,10 +21,10 @@ Gem::Specification.new do |s|
   s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
   s.require_paths = ["lib"]
 
-  s.add_dependency 'httparty', '~> 0.12.0'
-  s.add_dependency "rash", "~> 0.4.0"
-  s.add_development_dependency "rake", "~> 0.9.2"
-  s.add_development_dependency "rspec", "~> 2.10.0"
-  s.add_development_dependency "webmock", "~> 1.8.6"
-  s.add_development_dependency "vcr", "~> 2.1.1"
+  s.add_dependency 'httparty', '~> 0.17'
+  s.add_dependency "rash", "~> 0.4"
+  s.add_development_dependency "rake", "~> 12.3"
+  s.add_development_dependency "rspec", "~> 2.10"
+  s.add_development_dependency "webmock", "~> 3.5"
+  s.add_development_dependency "vcr", "~> 4.0"
 end

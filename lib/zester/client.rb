@@ -28,10 +28,6 @@ module Zester
       @property = Zester::Property.new(self)
     end
 
-    def mortgage
-      @mortgage = Zester::Mortgage.new(self)
-    end
-
     def valuation
       @valuation = Zester::Valuation.new(self)
     end
